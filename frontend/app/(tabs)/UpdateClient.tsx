@@ -1,34 +1,24 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  ScrollView,
-  SafeAreaView,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import {View,Text,TextInput,StyleSheet,ScrollView,SafeAreaView,TouchableOpacity,Alert} from 'react-native';
 
-const CustomerView = () => {
+const UpdateCustomerScreen = () => {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSave = () => {
-    Alert.alert('Información guardada', `Nombre: ${name}\nDirección: ${address}\nTeléfono: ${phone}`);
-  };
+  const [email, setEmail] = useState('');
 
   const handleUpdate = () => {
-    Alert.alert('Información actualizada', `Nombre: ${name}\nDirección: ${address}\nTeléfono: ${phone}`);
+    Alert.alert(
+      'Información actualizada',
+      `Nombre: ${name}\nDirección: ${address}\nTeléfono: ${phone}\nEmail: ${email}`
+    );
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.card}>
-          <Text style={styles.title}>👤 Información del Cliente</Text>
+          <Text style={styles.title}>👤 Actualizar Cliente</Text>
 
           <Text style={styles.label}>Nombre</Text>
           <TextInput
@@ -40,10 +30,12 @@ const CustomerView = () => {
 
           <Text style={styles.label}>Dirección</Text>
           <TextInput
-            style={styles.input}
+            style={[styles.input, styles.textArea]}
             value={address}
             onChangeText={setAddress}
             placeholder="Ingresa tu dirección"
+            multiline
+            numberOfLines={3}
           />
 
           <Text style={styles.label}>Número de teléfono</Text>
@@ -55,20 +47,17 @@ const CustomerView = () => {
             keyboardType="phone-pad"
           />
 
-          <Text style={styles.label}>Contraseña</Text>
+          <Text style={styles.label}>Email</Text>
           <TextInput
             style={styles.input}
-            value={password}
-            onChangeText={setPassword}
-            placeholder="Escribe tu contraseña"
-            secureTextEntry={true}
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Ingresa tu email"
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
 
-          <TouchableOpacity style={styles.button} onPress={handleSave}>
-            <Text style={styles.buttonText}>Guardar información</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={[styles.button, styles.updateButton]} onPress={handleUpdate}>
+          <TouchableOpacity style={styles.button} onPress={handleUpdate}>
             <Text style={styles.buttonText}>Actualizar información</Text>
           </TouchableOpacity>
         </View>
@@ -119,15 +108,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     backgroundColor: '#f8f9fa',
   },
+  textArea: {
+    height: 80,
+    textAlignVertical: 'top',
+  },
   button: {
-    marginTop: 20,
+    marginTop: 30,
     backgroundColor: '#214569',
     paddingVertical: 15,
     borderRadius: 10,
     alignItems: 'center',
-  },
-  updateButton: {
-    backgroundColor: '#214569',
   },
   buttonText: {
     color: '#fff',
@@ -136,4 +126,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomerView;
+export default UpdateCustomerScreen;
