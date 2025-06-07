@@ -15,6 +15,7 @@ const LoginScreen = () => {
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.loginContainer}>
           <Text style={styles.title}>Iniciar Sesión</Text>
+          <Text style={styles.subtitle}>Bienvenido de vuelta</Text>
 
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Email</Text>

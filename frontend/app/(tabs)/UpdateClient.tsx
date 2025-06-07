@@ -6,8 +6,15 @@ const UpdateCustomerScreen = () => {
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleUpdate = () => {
+    if (password !== confirmPassword) {
+      Alert.alert('Error', 'Las contraseñas no coinciden');
+      return;
+    }
+
     Alert.alert(
       'Información actualizada',
       `Nombre: ${name}\nDirección: ${address}\nTeléfono: ${phone}\nEmail: ${email}`
@@ -55,6 +62,24 @@ const UpdateCustomerScreen = () => {
             placeholder="Ingresa tu email"
             keyboardType="email-address"
             autoCapitalize="none"
+          />
+
+          <Text style={styles.label}>Contraseña</Text>
+          <TextInput
+            style={styles.input}
+            value={password}
+            onChangeText={setPassword}
+            placeholder="Escribe tu contraseña"
+            secureTextEntry
+          />
+
+          <Text style={styles.label}>Confirmar Contraseña</Text>
+          <TextInput
+            style={styles.input}
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            placeholder="Vuelve a escribir tu contraseña"
+            secureTextEntry
           />
 
           <TouchableOpacity style={styles.button} onPress={handleUpdate}>
