@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  ScrollView,
-  SafeAreaView,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import {View,Text,TextInput,StyleSheet,ScrollView,SafeAreaView,TouchableOpacity,Alert} from 'react-native';
 
 const CustomerView = () => {
   const [name, setName] = useState('');
